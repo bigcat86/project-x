@@ -1,0 +1,58 @@
+[
+    {
+        "username": "Big Cat",
+        "email": "holyroller86@hotmail.com",
+        "password": "hbskater",
+        "projects": [],
+        "tasks": [],
+        "teams": []
+    },
+    {
+        "username": "Benny Rodriguez",
+        "email": "benny@example.com",
+        "password": "benny",
+        "projects": [],
+        "tasks": [],
+        "teams": []
+    },
+    {
+        "username": "Scotty Smalls",
+        "email": "smalls@example.com",
+        "password": "smalls",
+        "projects": [],
+        "tasks": [],
+        "teams": []
+    },
+    {
+        "username": "Wendy Peffercorn",
+        "email": "wendy@example.com",
+        "password": "wendy",
+        "projects": [],
+        "tasks": [],
+        "teams": []
+    },
+    {
+        "username": "Squintz Palladores",
+        "email": "squintz@example.com",
+        "password": "password4",
+        "projects": [],
+        "tasks": [],
+        "teams": []
+    },
+    {
+        "username": "Ham Porter",
+        "email": "ham@example.com",
+        "password": "ham",
+        "projects": [],
+        "tasks": [],
+        "teams": []
+    },
+    {
+        "username": "Yeah-Yeah",
+        "email": "yeah@example.com",
+        "password": "yeah",
+        "projects": [],
+        "tasks": [],
+        "teams": []
+    }
+]
