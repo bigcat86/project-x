@@ -1,4 +1,52 @@
 .logo {
-  width: 50px;
-  height: 50px;
+  margin: -50px;
+  width: 200px;
+  height: 200px;
+}
+
+.donut {
+  width: 25rem;
+  margin-left: 7rem;
+  margin-bottom: 5rem;
+}
+
+.navbar {
+  margin-top: 10rem;
+}
+
+.NavBar {
+  background-image: linear-gradient(to right, #0d6efd, rgb(0, 0, 34));
+  height: 100vh;
+}
+
+.Login {
+  height: 5rem;
+}
+
+.Landing {
+  height: 100vh;
+}
+
+.logo-big {
+  height: 500px;
+  width: 500px;
+  background-image: url('./images/x-logo.png');
+}
+
+.landing-sign {
+  background-image: url('./images/x-logo.png');
+}
+
+.Projects {
+  height: 28rem;
+  overflow-y: scroll;
+}
+
+.Team {
+  height: 15rem;
+  overflow-y: scroll;
+}
+
+.project-title {
+  box-shadow: 0 0 20px pink;
 }

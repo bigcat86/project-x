@@ -3,6 +3,7 @@
         "username": "Big Cat",
         "email": "holyroller86@hotmail.com",
         "password": "hbskater",
+        "image": "",
         "projects": [],
         "tasks": [],
         "teams": []
@@ -11,6 +12,7 @@
         "username": "Benny Rodriguez",
         "email": "benny@example.com",
         "password": "benny",
+        "image": "",
         "projects": [],
         "tasks": [],
         "teams": []
@@ -19,6 +21,7 @@
         "username": "Scotty Smalls",
         "email": "smalls@example.com",
         "password": "smalls",
+        "image": "",
         "projects": [],
         "tasks": [],
         "teams": []
@@ -27,6 +30,7 @@
         "username": "Wendy Peffercorn",
         "email": "wendy@example.com",
         "password": "wendy",
+        "image": "",
         "projects": [],
         "tasks": [],
         "teams": []
@@ -35,6 +39,7 @@
         "username": "Squintz Palladores",
         "email": "squintz@example.com",
         "password": "password4",
+        "image": "../images/squints.png",
         "projects": [],
         "tasks": [],
         "teams": []
@@ -43,6 +48,7 @@
         "username": "Ham Porter",
         "email": "ham@example.com",
         "password": "ham",
+        "image": "",
         "projects": [],
         "tasks": [],
         "teams": []
@@ -51,6 +57,7 @@
         "username": "Yeah-Yeah",
         "email": "yeah@example.com",
         "password": "yeah",
+        "image": "",
         "projects": [],
         "tasks": [],
         "teams": []

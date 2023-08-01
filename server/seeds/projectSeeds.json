@@ -3,35 +3,45 @@
         "projectName": "Final Project",
         "description": "The culminating event for our coding bootcamp. One last attempt at a fullstack application that will land me a job!",
         "deadline": "8/8/2023",
-        "completion": 0,
-        "tasks": []
+        "completion": 50,
+        "completed": false,
+        "tasks": [],
+        "teams": []
     },
     {
         "projectName": "Vaccuum Retrieval",
         "description": "In a most likely futile attempt to outsmart the Beast, we will combine the power of multiple vaccuums to suck up the Babe Ruth ball.",
         "deadline": "6/6/2024",
         "completion": 0,
-        "tasks": []
+        "completed": false,
+        "tasks": [],
+        "teams": []
     },
     {
         "projectName": "Pickle The Beast",
         "description": "One of the greatest feats accomplished by man. The most amazing thing the sandlot has ever seen.",
         "deadline": "5/21/2024",
         "completion": 0,
-        "tasks": []
+        "completed": false,
+        "tasks": [],
+        "teams": []
     },
     {
         "projectName": "Catapult Retrieval",
         "description": "Using Smalls' erector sets, we will send in a motorized cart with a built-in catapult to launch the Babe Ruth ball over the fence.",
         "deadline": "9/10/2023",
         "completion": 0,
-        "tasks": []
+        "completed": false,
+        "tasks": [],
+        "teams": []
     },
     {
         "projectName": "The Mission Impossible",
         "description": "Yeah-Yeah will hang from an intricate pulley system to be lowered over the Babe Ruth ball, and hopefully return it to the sandlot.",
         "deadline": "7/21/2024",
         "completion": 0,
-        "tasks": []
+        "completed": false,
+        "tasks": [],
+        "teams": []
     }
 ]

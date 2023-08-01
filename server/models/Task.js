@@ -11,6 +11,10 @@ const taskSchema = new Schema(
       type: String,
       required: true,
     },
+    project: {
+      type: Schema.Types.ObjectId,
+      ref: "project",
+    },
     deadline: {
       type: Date,
       required: true,
@@ -19,8 +23,21 @@ const taskSchema = new Schema(
     },
     completion: {
       type: Number,
+      default: 0,
+      max: 100,
       required: true,
     },
+    completed: {
+      type: Boolean,
+      default: false,
+      required: true,
+    },
+    users: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "user",
+      },
+    ],
   },
   {
     toJSON: {
@@ -29,8 +46,8 @@ const taskSchema = new Schema(
   }
 );
 
-taskSchema.virtual("taskCount").get(function () {
-  return this.tasks.length;
+taskSchema.virtual("userCount").get(function () {
+  return this.users.length;
 });
 
 function local(date) {

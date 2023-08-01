@@ -19,12 +19,25 @@ const projectSchema = new Schema(
     },
     completion: {
       type: Number,
+      default: 0,
+      max: 100,
+      required: true,
+    },
+    completed: {
+      type: Boolean,
+      default: false,
       required: true,
     },
     tasks: [
       {
         type: Schema.Types.ObjectId,
         ref: "task",
+      },
+    ],
+    teams: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "team",
       },
     ],
   },

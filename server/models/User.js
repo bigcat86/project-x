@@ -7,27 +7,27 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
+      trim: true
     },
     email: {
       type: String,
       required: true,
       unique: true,
+      trim: true,
       match: [/.+@.+\..+/, "Must use a valid email address"],
     },
     password: {
       type: String,
       required: true,
+      trim: true
+    },
+    image: {
+        type: String,
     },
     projects: [
       {
         type: Schema.Types.ObjectId,
         ref: "project",
-      },
-    ],
-    tasks: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "task",
       },
     ],
     teams: [
