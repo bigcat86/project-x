@@ -1,26 +1,61 @@
+.App {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.header {
+  text-shadow: 0 0 10px pink;
+}
+
+.icon-link {
+  padding: 0.3rem
+}
+
+#logo {
+  height: 400vh;
+  /* position: absolute; */
+  object-position: left -900px bottom 1600px;
+  overflow: hidden;
+}
+
+.login-box {
+  padding: 1rem;
+  height: 20rem;
+  background: linear-gradient(to bottom, rgb(93, 23, 255), rgb(250, 119, 230));
+  border-radius: 20px;
+}
+
 .logo {
   margin: -50px;
   width: 200px;
   height: 200px;
 }
 
-.donut {
+#chart {
   width: 25rem;
   margin-left: 7rem;
   margin-bottom: 5rem;
 }
 
 .navbar {
-  margin-top: 10rem;
+  margin-top: 7rem;
+  margin-left: 3rem;
+}
+
+* li {
+  text-decoration: none;
 }
 
 .NavBar {
-  background-image: linear-gradient(to right, #0d6efd, rgb(0, 0, 34));
+  background-image: linear-gradient(to right, #0d6efd, rgba(0, 0, 34, 0.2));
   height: 100vh;
 }
 
 .Login {
+  padding: 1.3rem;
   height: 5rem;
+  background: rgba(0,0,0,0);
+  overflow: hidden;
 }
 
 .Landing {
@@ -28,17 +63,21 @@
 }
 
 .logo-big {
-  height: 500px;
-  width: 500px;
-  background-image: url('./images/x-logo.png');
+  height: 1000px;
+  width: 1000px;
 }
 
+
 .landing-sign {
-  background-image: url('./images/x-logo.png');
+  background: url('./images/x-logo.png');
 }
 
 .Projects {
-  height: 28rem;
+  /* height: 30rem; */
+  overflow-y: scroll;
+}
+
+.project-list {
   overflow-y: scroll;
 }
 
@@ -49,4 +88,55 @@
 
 .project-title {
   box-shadow: 0 0 20px pink;
+}
+
+.Team img {
+  object-fit: cover;
+  height: 5rem;
+  width: 5rem;
+  padding-right: 20px;
+  border-radius: 50%;
+}
+
+.Profile img {
+  border-radius: 50%;
+  border: 10px solid rgb(255, 255, 255);
+  height: 20rem;
+  position: absolute;
+  top: 7rem;
+}
+
+.profile-header {
+  /* border-radius: 5rem; */
+  background: rgb(0, 0, 17);
+  height: 15rem;
+  border: 3px solid whitesmoke;
+}
+
+.profile-header h1 {
+  margin-left: 22rem;
+}
+
+.profile-left {
+  height: 60vh;
+  background: rgb(0, 0, 17);
+  border: 3px solid whitesmoke;
+  /* border-radius: 5rem; */
+}
+
+.profile-right {
+  height: 60vh;
+  background: rgb(0, 0, 17);
+  border: 3px solid whitesmoke;
+  /* border-radius: 5rem; */
+}
+
+.card {
+  margin-top: 10rem;
+  height: 8rem;
+  overflow-y: scroll;
+}
+
+span {
+  width: 10rem;
 }

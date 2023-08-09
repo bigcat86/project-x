@@ -6,7 +6,7 @@ const teamSchema = new Schema(
       type: String,
       required: true,
     },
-    project: {
+    projectId: {
       type: Schema.Types.ObjectId,
       ref: "project",
     },

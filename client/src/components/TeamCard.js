@@ -1,6 +1,6 @@
 import React from "react";
 import * as Icon from "react-bootstrap-icons";
-import squintz from '../images/squints.png'
+import logo from "../images/x-logo.png"
 
 
 export default function TeamCard({users}) {
@@ -17,8 +17,8 @@ export default function TeamCard({users}) {
       {users.map((user) => {
         return (
           <div key={user.id}>
-            <li className="list-group-item bg-dark">
-              <img src={user.image ? `../client/src/${user.image}` : ""} className="teamImg"></img>
+            <li className="list-group-item bg-dark d-flex">
+              <img src={user.image ? user.image : logo} alt={""} className="teamImg"></img>
               {user.username}
             </li>
           </div>

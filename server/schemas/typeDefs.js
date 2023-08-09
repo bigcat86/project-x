@@ -2,7 +2,7 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   type User {
-    id: ID!
+    _id: ID!
     username: String!
     email: String!
     password: String!
@@ -12,8 +12,19 @@ const typeDefs = gql`
     teams: [Team]
   }
 
+  input UserData {
+    _id: ID!
+    username: String!
+    email: String
+    password: String
+    image: String   
+    projects: [ProjectData]
+    tasks: [TaskData]
+    teams: [TeamData]
+  }
+
   type Project {
-    id: ID!
+    _id: ID!
     projectName: String!
     description: String!
     deadline: String
@@ -24,21 +35,21 @@ const typeDefs = gql`
   }
 
   input ProjectData {
-    id: ID!
+    _id: ID!
     projectName: String!
     description: String!
     deadline: String
     completion: Int!
     completed: Boolean!
-    tasks: [Task]
-    teams: [Team]
+    tasks: [TaskData]
+    teams: [TeamData]
   }
 
   type Task {
-    id: ID!
+    _id: ID!
     taskName: String!
-    description: String!
-    project: Project!
+    description: String
+    projectId: ID!
     deadline: String
     completion: Int!
     completed: Boolean!
@@ -46,22 +57,30 @@ const typeDefs = gql`
   }
 
   input TaskData {
-    id: ID!
+    _id: ID!
     taskName: String!
-    description: String!
-    project: Project!
+    description: String
+    projectId: ID!
     deadline: String
     completion: Int!
     completed: Boolean!
-    users: [User]
+    users: [UserData]
   }
 
   type Team {
-    id: ID!
+    _id: ID!
     teamName: String!
-    project: Project
+    projectId: ID
     teamLead: User!
-    users: [User]!
+    users: [ID]!
+  }
+
+  input TeamData {
+    _id: ID!
+    teamName: String!
+    projectId: ID
+    teamLead: ID!
+    users: [ID]!
   }
 
   type taskResponse {
@@ -72,6 +91,11 @@ const typeDefs = gql`
   type projectResponse {
     success: Boolean
     project: Project
+  }
+
+  type teamResponse {
+    success: Boolean
+    team: Team
   }
 
   type Auth {
@@ -85,15 +109,24 @@ const typeDefs = gql`
     projects: [Project]
     tasks: [Task]
     me: User
+    myProjects(userId: ID!): [Project]
+    myTasks(userId: ID!): [Task]
+    myTeams(userId: ID!): [Team]
   }
 
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addTask(task: TaskData): taskResponse
-    addProject(project: ProjectData): projectResponse
-    assignTask(userId: ID!, task: TaskData): taskResponse
+    addTask(taskName: String!, description: String!, projectId: ID!): Task
+    removeTask(taskId: ID!, projectId: ID!): Task
+    addProject(projectName: String!, description: String!): Project
+    assignTask(userId: ID!, taskID: ID!): User
+    createTeam(userId: ID!): teamResponse
+    updateTeam(user: UserData): Team
+    updateProject(project: ProjectData): Project
+    updateTask(task: TaskData): Task
   }
 `;
 
 module.exports = typeDefs;
+

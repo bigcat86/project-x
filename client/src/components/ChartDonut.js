@@ -6,10 +6,10 @@ import * as Icon from "react-bootstrap-icons";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const data = {
-  labels: ["Blue", "Orange"],
+  labels: ["Completion"],
   datasets: [
     {
-      label: "# of Votes",
+      label: "%",
       data: [60, 40],
       backgroundColor: ["#0d6efd", "rgba(255, 206, 86, 0.2)"],
       borderColor: ["rgba(54, 162, 235, 1)", "rgba(0, 0, 0, 1)"],
@@ -25,8 +25,6 @@ export default function ChartDonut() {
         <Icon.GraphUp color="whitesmoke" size={25} /> Performance
       </h3>
     <div id="chart">
-      
-
       <Doughnut data={data} />
     </div>
     </div>

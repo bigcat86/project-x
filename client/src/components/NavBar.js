@@ -1,45 +1,53 @@
 import React from "react";
 import Header from "./Header.js";
 import * as Icon from "react-bootstrap-icons";
+import LoginHeader from "./LoginHeader.js";
+import { Link } from "react-router-dom";
+import Auth from "../utils/auth.js"
 // import MyStopwatch from './Watch.js'
 
 export default function NavBar() {
-  return (
+  
+  const style = {
+    color: "whitesmoke",
+    textDecoration: "none"
+  }
+
+    return (
+    <div>
+    <LoginHeader />
     <div className="navbar">
       <ul className="nav d-flex flex-column align-items-start w-100">
         <Header />
-        <li className="nav-item my-3 d-flex align-items-center">
-          <Icon.PersonCircle color="whitesmoke" size={25} />
-          <a
-            className="nav-link active text-light"
-            aria-current="page"
-            href="#"
-          >
-            Profile
-          </a>
+        <li className="nav-item my-3 d-flex align-items-center">       
+          <Link to={Auth.loggedIn()? "/" : "/landing"} style={style}>
+          <Icon.Speedometer color="whitesmoke" size={25} className="mx-3"/>
+            Dashboard
+          </Link>
         </li>
-        <li className="nav-item my-3 d-flex align-items-center">
-          <Icon.CheckCircleFill color="whitesmoke" size={25} />
-          <a className="nav-link text-light" href="#">
+        <li className="nav-item my-3 d-flex align-items-center">       
+          <Link to={Auth.loggedIn()? "/projects" : "/landing"} style={style}>
+          <Icon.Check2Circle color="whitesmoke" size={25} className="mx-3"/>
             Projects
-          </a>
+          </Link>
         </li>
-        <li className="nav-item my-3 d-flex align-items-center">
-          <Icon.GraphUp color="whitesmoke" size={25} />
-          <a className="nav-link text-light" href="#">
-            Performance
-          </a>
+        <li className="nav-item my-3 d-flex align-items-center">       
+          <Link to={Auth.loggedIn()? "/me" : "/landing"} style={style}>
+          <Icon.PersonCircle color="whitesmoke" size={25} className="mx-3"/>
+            Profile
+          </Link>
         </li>
-        <li className="nav-item my-3 d-flex align-items-center">
-          <Icon.ChatDotsFill color="whitesmoke" size={25} />
-          <a className="nav-link text-light" aria-disabled="true">
+        <li className="nav-item my-3 d-flex align-items-center">       
+          <Link to={Auth.loggedIn()? "/communication" : "/landing"} style={style}>
+          <Icon.Messenger color="whitesmoke" size={25} className="mx-3"/>
             Communication
-          </a>
+          </Link>
         </li>
       </ul>
       {/* <div id="watch">
       <MyStopwatch />
       </div> */}
+    </div>
     </div>
   );
 }
