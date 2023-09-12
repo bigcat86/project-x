@@ -31,13 +31,13 @@ const projectSchema = new Schema(
     tasks: [
       {
         type: Schema.Types.ObjectId,
-        ref: "task",
+        ref: "Task",
       },
     ],
     teams: [
       {
         type: Schema.Types.ObjectId,
-        ref: "team",
+        ref: "Team",
       },
     ],
   },

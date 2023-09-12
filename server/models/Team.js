@@ -8,16 +8,16 @@ const teamSchema = new Schema(
     },
     projectId: {
       type: Schema.Types.ObjectId,
-      ref: "project",
+      ref: "Project",
     },
     teamLead: {
       type: Schema.Types.ObjectId,
-      ref: "user",
+      ref: "User",
     },
     users: [
       {
         type: Schema.Types.ObjectId,
-        ref: "user"
+        ref: "User"
       }
     ]
   },

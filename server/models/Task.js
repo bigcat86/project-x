@@ -5,7 +5,6 @@ const taskSchema = new Schema(
     taskName: {
       type: String,
       required: true,
-      unique: true,
     },
     description: {
       type: String,
@@ -13,7 +12,7 @@ const taskSchema = new Schema(
     },
     projectId: {
       type: Schema.Types.ObjectId,
-      ref: "project",
+      ref: "Project",
     },
     deadline: {
       type: Date,
@@ -35,7 +34,7 @@ const taskSchema = new Schema(
     users: [
       {
         type: Schema.Types.ObjectId,
-        ref: "user",
+        ref: "User",
       },
     ],
   },

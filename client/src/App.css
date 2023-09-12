@@ -19,6 +19,7 @@
 }
 
 .login-box {
+  margin-top: 15rem;
   padding: 1rem;
   height: 20rem;
   background: linear-gradient(to bottom, rgb(93, 23, 255), rgb(250, 119, 230));
@@ -73,7 +74,7 @@
 }
 
 .Projects {
-  /* height: 30rem; */
+  height: auto;
   overflow-y: scroll;
 }
 
@@ -94,7 +95,8 @@
   object-fit: cover;
   height: 5rem;
   width: 5rem;
-  padding-right: 20px;
+  /* padding-right: 20px; */
+  margin-right: 2rem;
   border-radius: 50%;
 }
 

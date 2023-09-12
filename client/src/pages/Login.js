@@ -64,9 +64,9 @@ export default function Login() {
   };
 
   return (
-    <div className="container-fluid" data-bs-theme="dark">
+    <div className="container-fluid d-flex justify-content-center align-items-center" data-bs-theme="dark">
       <div className="row">
-        <div className="col-6 d-flex align-items-center">
+        <div className="col-12 d-flex align-items-center">
           <div className="login-box d-flex flex-column gap-2">
             {location.pathname === "/login" ? <h1>Login</h1> : <h1>Sign-up</h1>}
             {location.pathname === "/signup" ? (

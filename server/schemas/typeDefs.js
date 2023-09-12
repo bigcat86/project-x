@@ -109,9 +109,6 @@ const typeDefs = gql`
     projects: [Project]
     tasks: [Task]
     me: User
-    myProjects(userId: ID!): [Project]
-    myTasks(userId: ID!): [Task]
-    myTeams(userId: ID!): [Team]
   }
 
   type Mutation {
@@ -120,6 +117,7 @@ const typeDefs = gql`
     addTask(taskName: String!, description: String!, projectId: ID!): Task
     removeTask(taskId: ID!, projectId: ID!): Task
     addProject(projectName: String!, description: String!): Project
+    removeProject(projectId: ID!): Project
     assignTask(userId: ID!, taskID: ID!): User
     createTeam(userId: ID!): teamResponse
     updateTeam(user: UserData): Team

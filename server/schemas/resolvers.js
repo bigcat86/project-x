@@ -23,27 +23,6 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    myProjects: async (parent, args, context) => {
-      if (context.user) {
-        const user = await User.findOne({ _id: context.user._id });
-        return user.projects;
-      }
-      throw new AuthenticationError("You need to be logged in!");
-    },
-    myTasks: async (parent, args, context) => {
-      if (context.user) {
-        const user = await User.findOne({ _id: context.user._id });
-        return user.tasks;
-      }
-      throw new AuthenticationError("You need to be logged in!");
-    },
-    myTeams: async (parent, args, context) => {
-      if (context.user) {
-        const user = await User.findOne({ _id: context.user._id });
-        return user.teams;
-      }
-      throw new AuthenticationError("You need to be logged in!");
-    },
   },
 
   Mutation: {
@@ -74,14 +53,14 @@ const resolvers = {
         console.log(error);
       }
     },
-    addTask: async (parent, { taskName, description, projectId }) => {
+    addTask: async (parent, { taskName, description, projectId }, context) => {
       try {
         const task = await Task.create({ taskName, description, projectId });
         const project = await Project.findOneAndUpdate(
           { _id: task.projectId },
           {
             $addToSet: {
-              tasks: { tasks: task },
+              tasks: { _id: task._id },
             },
           },
           {
@@ -93,7 +72,7 @@ const resolvers = {
           { _id: context.user._id },
           {
             $addToSet: {
-              tasks:  task 
+              tasks: { _id: task._id },
             },
           },
           {
@@ -107,20 +86,22 @@ const resolvers = {
         console.log(error);
       }
     },
-    removeTask: async (parent, { taskId, projectId }) => {
+    removeTask: async (parent, { taskId, projectId }, context) => {
       try {
-        const task = await Task.findOneAndDelete({ _id: taskId });
-        const project = await Project.findOneAndUpdate(
-          { _id: projectId },
-          { $pull: { tasks: { _id: taskId } } },
-          { new: true }
-        );
-        const user = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { tasks: { _id: taskId } } },
-          { new: true }
-        );
-        return task;
+        if (context.user) {
+          const task = await Task.findOneAndDelete({ _id: taskId });
+          const project = await Project.findOneAndUpdate(
+            { _id: projectId },
+            { $pull: { tasks: { _id: taskId } } },
+            { new: true }
+          );
+          const user = await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $pull: { tasks: { _id: taskId } } },
+            { new: true }
+          );
+          return task;
+        }
       } catch (error) {
         console.log(error);
       }
@@ -141,6 +122,19 @@ const resolvers = {
         }
       } catch (error) {
         console.log(error);
+      }
+    },
+    removeProject: async (parent, { projectId }, context) => {
+      try {
+        const project = await Project.findOneAndDelete({ _id: projectId });
+        const user = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { projects: { _id: projectId } } },
+          { new: true }
+        );
+        return project;
+      } catch (error) {
+        console.error(error);
       }
     },
   },

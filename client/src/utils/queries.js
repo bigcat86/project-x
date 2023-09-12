@@ -40,6 +40,9 @@ export const QUERY_PROJECTS = gql`
       deadline
       completion
       completed
+      tasks {
+        _id
+      }
     }
   }
 `;

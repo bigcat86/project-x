@@ -27,13 +27,13 @@ const userSchema = new Schema(
     projects: [
       {
         type: Schema.Types.ObjectId,
-        ref: "project",
+        ref: "Project",
       },
     ],
     teams: [
       {
         type: Schema.Types.ObjectId,
-        ref: "team",
+        ref: "Team",
       },
     ],
   },
