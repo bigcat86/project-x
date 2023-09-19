@@ -20,15 +20,14 @@ export default function Home() {
   const projects = projectData?.projects || [];
   const profile = myData?.me || [];
 
-  let meProjects = projects.filter((project) => {
-    for (let i = 0; i < profile.projects.length; i++) {
-      if (profile.projects[i]._id === project._id) {
-        return project;
-      }
-    }
-  });
+  // let meProjects = projects.filter((project) => {
+  //   for (let i = 0; i < profile.projects.length; i++) {
+  //     if (profile.projects[i]._id === project._id) {
+  //       return project;
+  //     }
+  //   }
+  // });
 
-  console.log(profile.username)
   return (
     <div className="container-fluid text-center mt-5">
       <div className="row text-center">

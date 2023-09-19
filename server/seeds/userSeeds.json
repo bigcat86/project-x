@@ -1,5 +1,14 @@
 [
     {
+        "username": "Demo",
+        "email": "demo@projectx.com",
+        "password": "password",
+        "image": "https://i.ibb.co/LdtCr2R/AI-Aaron-space.jpg",
+        "projects": [],
+        "tasks": [],
+        "teams": []
+    },
+    {
         "username": "Big Cat",
         "email": "holyroller86@hotmail.com",
         "password": "hbskater",

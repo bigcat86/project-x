@@ -1,0 +1,47 @@
+[
+    {
+        "taskName": "PF FLyers",
+        "description": "Get Benny a new pair of kicks.",
+        "projectId": "6500bb163f84483402f04965",
+        "deadline": "8/8/2023",
+        "completion": 100,
+        "completed": true,
+        "users": []
+    },
+    {
+        "taskName": "Hop Fence",
+        "description": "Make it over old man Mertle's backyard fence.",
+        "projectId": "6500bb163f84483402f04965",
+        "deadline": "8/8/2023",
+        "completion": 50,
+        "completed": false,
+        "users": []
+    },
+    {
+        "taskName": "Snatch Ball",
+        "description": "Run your ass off to grab the ball before the Beast.",
+        "projectId": "6500bb163f84483402f04965",
+        "deadline": "8/8/2023",
+        "completion": 0,
+        "completed": false,
+        "users": []
+    },
+    {
+        "taskName": "Paint the Town",
+        "description": "Take the Beast on a marathon through the town.",
+        "projectId": "6500bb163f84483402f04965",
+        "deadline": "8/8/2023",
+        "completion": 0,
+        "completed": false,
+        "users": []
+    },
+    {
+        "taskName": "Return Ball",
+        "description": "Help the Beast from under the fence and return the ball to Smalls or Mr. Mertle.",
+        "projectId": "6500bb163f84483402f04965",
+        "deadline": "8/8/2023",
+        "completion": 0,
+        "completed": false,
+        "users": []
+    }
+]

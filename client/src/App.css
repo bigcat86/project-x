@@ -1,6 +1,9 @@
 .App {
-  overflow: hidden;
   height: 100vh;
+}
+
+.Landing {
+  overflow: hidden;
 }
 
 .header {
@@ -50,6 +53,7 @@
 .NavBar {
   background-image: linear-gradient(to right, #0d6efd, rgba(0, 0, 34, 0.2));
   height: 100vh;
+  position: sticky;
 }
 
 .Login {
@@ -74,13 +78,13 @@
 }
 
 .Projects {
-  height: auto;
-  overflow-y: scroll;
+  /* height: auto; */
+  /* overflow-y: scroll; */
 }
 
-.project-list {
+/* .project-list {
   overflow-y: scroll;
-}
+} */
 
 .Team {
   height: 15rem;
@@ -100,16 +104,16 @@
   border-radius: 50%;
 }
 
-.Profile img {
+#pfp {
   border-radius: 50%;
   border: 10px solid rgb(255, 255, 255);
   height: 20rem;
   position: absolute;
   top: 7rem;
+  z-index: 100;
 }
 
 .profile-header {
-  /* border-radius: 5rem; */
   background: rgb(0, 0, 17);
   height: 15rem;
   border: 3px solid whitesmoke;
@@ -123,14 +127,12 @@
   height: 60vh;
   background: rgb(0, 0, 17);
   border: 3px solid whitesmoke;
-  /* border-radius: 5rem; */
 }
 
 .profile-right {
   height: 60vh;
   background: rgb(0, 0, 17);
   border: 3px solid whitesmoke;
-  /* border-radius: 5rem; */
 }
 
 .card {
@@ -141,4 +143,22 @@
 
 span {
   width: 10rem;
+}
+
+#user-img {
+  object-fit: cover;
+  height: 5rem;
+  width: 5rem;
+  /* padding-right: 20px; */
+  margin-right: 2rem;
+  border-radius: 50%;
+}
+
+#myteam-img {
+  object-fit: cover;
+  height: 5rem;
+  width: 5rem;
+  /* padding-right: 20px; */
+  margin-right: 2rem;
+  border-radius: 50%;
 }

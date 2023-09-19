@@ -60,7 +60,7 @@ const resolvers = {
           { _id: task.projectId },
           {
             $addToSet: {
-              tasks: { _id: task._id },
+              tasks: { _id: task._id }
             },
           },
           {
@@ -72,7 +72,7 @@ const resolvers = {
           { _id: context.user._id },
           {
             $addToSet: {
-              tasks: { _id: task._id },
+              tasks: { _id: task._id }
             },
           },
           {
@@ -86,22 +86,20 @@ const resolvers = {
         console.log(error);
       }
     },
-    removeTask: async (parent, { taskId, projectId }, context) => {
+    removeTask: async (parent, { taskId, projectId }) => {
       try {
-        if (context.user) {
           const task = await Task.findOneAndDelete({ _id: taskId });
           const project = await Project.findOneAndUpdate(
             { _id: projectId },
             { $pull: { tasks: { _id: taskId } } },
             { new: true }
           );
-          const user = await User.findOneAndUpdate(
-            { _id: context.user._id },
-            { $pull: { tasks: { _id: taskId } } },
-            { new: true }
-          );
-          return task;
-        }
+          // const user = await User.findOneAndUpdate(
+          //   { _id: context.user._id },
+          //   { $pull: { tasks: { _id: taskId } } },
+          //   { new: true }
+          // );
+          return task;    
       } catch (error) {
         console.log(error);
       }
@@ -127,6 +125,7 @@ const resolvers = {
     removeProject: async (parent, { projectId }, context) => {
       try {
         const project = await Project.findOneAndDelete({ _id: projectId });
+        const tasks = await Task.deleteMany({projectId: project._id})
         const user = await User.findOneAndUpdate(
           { _id: context.user._id },
           { $pull: { projects: { _id: projectId } } },

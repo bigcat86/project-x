@@ -8,7 +8,7 @@ import TaskCard from "../components/TaskCard";
 import SingleProject from "./SingleProject";
 
 export default function Projects() {
-  const { data: projectData } = useQuery(QUERY_PROJECTS);
+  const { data: projectData, loading: projectLoading } = useQuery(QUERY_PROJECTS);
   const projects = projectData?.projects || [];
 
 const [addProject, {error}] = useMutation(ADD_PROJECT);
@@ -50,11 +50,11 @@ const [addProject, {error}] = useMutation(ADD_PROJECT);
   return (
     <div className="container-fluid">
       <div className="Projects row mt-5">
-        <div className="project-list col-7">
-          <ProjectCard projects={projects} />
+        <div className="project-list col">
+          {projectLoading? <h1>loading...</h1> : <ProjectCard projects={projects} />}
         </div>
 
-        <div className="col-5" data-bs-theme="dark">
+        {/* <div className="col-5" data-bs-theme="dark">
             <h1>Add a Project</h1>
           <div className="input-group input-group-lg">
             <span className="input-group-text" id="inputGroup-sizing-lg">
@@ -91,7 +91,7 @@ const [addProject, {error}] = useMutation(ADD_PROJECT);
           >
             Add Project
           </button>
-        </div>
+        </div> */}
         
       </div>
     </div>

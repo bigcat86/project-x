@@ -78,7 +78,6 @@ export const REMOVE_PROJECT = gql`
 export const REMOVE_TASK = gql`
   mutation removeTask($taskId: ID!, $projectId: ID!) {
     removeTask(taskId: $taskId, projectId: $projectId) {
-      task {
         _id
         taskName
         description
@@ -90,7 +89,6 @@ export const REMOVE_TASK = gql`
           _id
           username
         }
-      }
     }
   }
 `;
@@ -106,7 +104,3 @@ export const ASSIGN_TASK = gql`
     }
   }
 `;
-
-// vaccuum
-// 64d1d542ff546b421aa83842 proj
-// 64ffda0d360e570aef883b44 task attach
