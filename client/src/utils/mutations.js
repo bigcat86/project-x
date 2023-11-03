@@ -121,3 +121,18 @@ export const addTeammate = gql`
     }
   }
 `;
+
+export const CREATE_TEAM = gql`
+  mutation createTeam($teamName: String!, $teamLead: String!) {
+    createTeam(teamName: $teamName, teamLead: $teamLead) {
+      team {
+        _id
+        teamName
+        users {
+          _id
+          username
+        }
+      }
+    }
+  }
+`;

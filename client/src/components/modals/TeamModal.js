@@ -2,12 +2,19 @@ import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_ME, QUERY_USERS } from "../../utils/queries";
 import UserCard from "../UserCard";
-import CreateTeamModal from "../modals/CreateTeamModal";
 import logo from "../../images/x-logo.png";
 import * as Icon from "react-bootstrap-icons";
 import CreateTeam from "../CreateTeam";
 
 export default function TeamModal({ users }) {
+
+  const [teammates, setTeammates] = useState([]);
+
+  const addToTeam = (user) => {
+    setTeammates([...teammates, user]);
+  }
+
+
   return (
     <div>
       <button
@@ -44,7 +51,7 @@ export default function TeamModal({ users }) {
               <div className="row">
                 <div className="col-6">
                   <p>My Teams</p>
-                  <CreateTeam users={users} />
+                  <CreateTeam users={users} teammates={teammates} setTeammates={setTeammates}/>
                 </div>
                 <div className="col-6">
                   <p>Available Users</p>
@@ -63,6 +70,8 @@ export default function TeamModal({ users }) {
                             color="whitesmoke"
                             className="mx-3"
                             size={25}
+                            onClick={() => addToTeam(user)}
+                            
                           />
                         </div>
                       </div>

@@ -2,7 +2,7 @@ import React from "react";
 import * as Icon from "react-bootstrap-icons";
 import logo from "../images/x-logo.png";
 import TeamModal from "./modals/TeamModal";
-import CreateTeamModal from "./modals/CreateTeamModal";
+
 
 export default function UserCard({ users }) {
   if (!users.length) {
@@ -11,7 +11,7 @@ export default function UserCard({ users }) {
 
   return (
     <div className="" data-bs-theme="dark">
-      
+
       <h3 className="project-title border border-light rounded bg-primary p-3 d-flex flex-column align-items-start">
         <Icon.PeopleFill color="whitesmoke" size={25} /> Users
         <TeamModal users={users} className="align-self-end"/>

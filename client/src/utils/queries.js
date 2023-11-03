@@ -61,6 +61,23 @@ export const QUERY_TASKS = gql`
   }
 `;
 
+export const QUERY_TEAMS = gql`
+  query allTeams {
+    teams {
+      _id
+      teamName
+      projectId
+      teamLead
+      users {
+        _id
+        username
+        image
+      }
+    }
+  }
+`;
+
+
 export const QUERY_MYPROJECTS = gql`
   query myProjects($userId: ID!) {
     projects(userId: $userId) {

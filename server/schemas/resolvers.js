@@ -169,6 +169,19 @@ const resolvers = {
         console.error(error);
       }
       
+    },
+    createTeam: async (parent, { teamName, teamLead }, conext) => {
+      try {
+        const team = await Team.create({ teamName, teamLead});
+        const user = await User.findByIdAndUpdate(
+          { _id: conext.user._id },
+          { $addToSet: { teams: { _id: team._id }}},
+          { new: true }
+        );
+        return team;
+      } catch (error) {
+        console.error(error);
+      }
     }
   },
 };

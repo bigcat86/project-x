@@ -1,18 +1,26 @@
 import React, { useState } from "react";
 import * as Icon from "react-bootstrap-icons";
 import { useMutation, useQuery } from "@apollo/client";
-import { QUERY_USERS, QUERY_ME } from "../utils/queries";
-import { ADD_USER } from "../utils/mutations";
+import { QUERY_USERS, QUERY_ME, QUERY_TEAMS } from "../utils/queries";
+import { ADD_USER, CREATE_TEAM } from "../utils/mutations";
 import Logo from "../images/x-logo.png";
+import TeamCard from "./TeamCard";
 
-export default function CreateTeam({ users }) {
-  const [addUser, { error }] = useMutation(ADD_USER);
+export default function CreateTeam({ users, teammates, setTeammates }) {
+  const [createTeam, { teamError }] = useMutation(CREATE_TEAM); 
+  const { data: teamData, loading: teamLoading } = useQuery(QUERY_TEAMS);
+
+  const teams = teamData?.teams || [];
 
   const [formState, setFormState] = useState({
     teamName: "",
-    teamLead: "",
-    teamMembers: [],
+    teamLead: ""
   });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({ ...formState, [name]: value });
+  };
 
   const [showNext, setShowNext] = useState(false);
 
@@ -20,9 +28,34 @@ export default function CreateTeam({ users }) {
     showNext ? setShowNext(false) : setShowNext(true);
   };
 
+  const removeFromTeam = (user) => {
+    const newTeammates = teammates.filter((teammate) => teammate !== user);
+    setTeammates(newTeammates);
+  };
+
+  async function handleCreateTeam(event) {
+    event.preventDefault();
+
+    try {
+        const { data } = await createTeam({
+            variables: {
+                teamName: formState.teamName,
+                teamLead: formState.teamLead,
+                teamMembers: teammates
+            }
+        });
+    } catch (error) {   
+        console.error(error);
+    }
+    };        
+
   return (
     <div>
-      <button type="button" className="btn btn-light mb-3" onClick={applyShowNext}>
+      <button
+        type="button"
+        className="btn btn-light mb-3"
+        onClick={applyShowNext}
+      >
         Create Team
       </button>
       {showNext ? (
@@ -32,10 +65,12 @@ export default function CreateTeam({ users }) {
               Team Name
             </span>
             <input
+              name="teamName"
               type="text"
               className="form-control"
               aria-label="Sizing example input"
               aria-describedby="inputGroup-sizing-default"
+              onChange={handleChange}
             ></input>
           </div>
 
@@ -44,33 +79,69 @@ export default function CreateTeam({ users }) {
               Team Lead (user)
             </span>
             <input
+              name="teamLead"
               type="text"
               className="form-control"
               aria-label="Sizing example input"
               aria-describedby="inputGroup-sizing-default"
+              onChange={handleChange}
             ></input>
           </div>
 
           <div className="mb-5">
-            <h4 className="card-text placeholder-glow">
-              Select Your Teammates
-              <Icon.ChevronDoubleRight
-                color="whitesmoke"
-                className="mx-3"
-                size={25}
-              />
-              <span className="placeholder"></span>
-            </h4>
-            
+            <div>
+              {teammates.length > 0 ? (
+                teammates.map((user) => {
+                  return (
+                    <div className="d-flex">
+                      <img
+                        src={user.image}
+                        alt="logo"
+                        className="rounded-circle"
+                        width="50"
+                        height="50"
+                      />
+                      <p className="mx-3">{user.username}</p>
+                      <Icon.XCircleFill
+                        color="whitesmoke"
+                        className="mx-3"
+                        size={25}
+                        onClick={() => removeFromTeam(user)}
+                      />
+                    </div>
+                  );
+                })
+              ) : (
+                <h4 className="card-text placeholder-glow">
+                  Select Your Teammates
+                  <Icon.ChevronDoubleRight
+                    color="whitesmoke"
+                    className="mx-3"
+                    size={25}
+                  />
+                  <span className="placeholder"></span>
+                </h4>
+              )}
+            </div>
           </div>
 
           <em>
-            To assign a project for this team, click the projects tab and
-            select the project you would like to assign.
+            To assign a project for this team, click the projects tab and select
+            the project you would like to assign.
           </em>
+          <br></br>
+          <button type="button" className="btn btn-primary mt-3" onClick={handleCreateTeam}>
+            Add Team
+          </button>
         </div>
       ) : (
-        <div></div>
+        <div>
+            {teams.length > 0 ? (
+                <TeamCard teams={teams} />
+               ) : (
+                    <div></div>
+                )}
+        </div>
       )}
     </div>
   );

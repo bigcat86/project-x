@@ -119,7 +119,7 @@ const typeDefs = gql`
     addProject(projectName: String!, description: String!): Project
     removeProject(projectId: ID!): Project
     assignTask(userId: ID!, taskID: ID!): User
-    createTeam(userId: ID!): teamResponse
+    createTeam(teamName: String!, teamLead: String!): teamResponse
     addTeammate(userId: ID!, teamId: ID!): teamResponse
     updateProject(project: ProjectData): Project
     updateTask(task: TaskData): Task

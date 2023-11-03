@@ -58,7 +58,7 @@ export default function Modal() {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   return (
     <div>
