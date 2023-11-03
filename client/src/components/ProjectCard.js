@@ -8,7 +8,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Tooltip from "react-bootstrap";
 import AddProjectModal from "../components/modals/AddProjectModal";
 
-export default function ProjectCard({ projects }) {
+export default function ProjectCard({ projects, profile }) {
   const style = {
     color: "whitesmoke",
     textDecoration: "none",

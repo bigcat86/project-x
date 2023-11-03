@@ -120,7 +120,7 @@ const typeDefs = gql`
     removeProject(projectId: ID!): Project
     assignTask(userId: ID!, taskID: ID!): User
     createTeam(userId: ID!): teamResponse
-    updateTeam(user: UserData): Team
+    addTeammate(userId: ID!, teamId: ID!): teamResponse
     updateProject(project: ProjectData): Project
     updateTask(task: TaskData): Task
   }

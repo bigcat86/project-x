@@ -3,13 +3,13 @@ import { useQuery } from "@apollo/client";
 import gql from "graphql-tag";
 import NavBar from "../components/NavBar";
 import ProjectCard from "../components/ProjectCard";
-import TeamCard from "../components/TeamCard";
+import UserCard from "../components/UserCard";
 import ChartDonut from "../components/ChartDonut";
 import TaskCard from "../components/TaskCard";
 
 import { QUERY_PROJECTS, QUERY_USERS, QUERY_ME } from "../utils/queries";
-import Auth from "../utils/auth"
-
+import Auth from "../utils/auth";
+import TeamModal from "../components/modals/TeamModal";
 
 export default function Home() {
   const { data: userData } = useQuery(QUERY_USERS);
@@ -37,10 +37,10 @@ export default function Home() {
         </div>
         <div className="col-6 d-flex flex-column">
           <div className="donut">
-            <ChartDonut myProjects={profile.projects}/>
+            <ChartDonut myProjects={profile.projects} />
           </div>
           <div className="team">
-            <TeamCard users={users} myTeams={profile.teams} />
+            <UserCard users={users} myTeams={profile.teams} />
           </div>
         </div>
       </div>

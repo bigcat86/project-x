@@ -54,44 +54,6 @@ const [addProject, {error}] = useMutation(ADD_PROJECT);
           {projectLoading? <h1>loading...</h1> : <ProjectCard projects={projects} />}
         </div>
 
-        {/* <div className="col-5" data-bs-theme="dark">
-            <h1>Add a Project</h1>
-          <div className="input-group input-group-lg">
-            <span className="input-group-text" id="inputGroup-sizing-lg">
-              Project Name
-            </span>
-            <input
-              name="projectName"
-              id="projectName"
-              type="text"
-              className="form-control"
-              aria-label="Sizing example input"
-              aria-describedby="inputGroup-sizing-lg"
-              onChange={handleChange}
-            ></input>
-          </div>
-          <div className="input-group input-group-lg">
-            <span className="input-group-text" id="inputGroup-sizing-lg">
-              Description
-            </span>
-            <input
-              name="description"
-              id="description"
-              type="text"
-              className="form-control"
-              aria-label="Sizing example input"
-              aria-describedby="inputGroup-sizing-lg"
-              onChange={handleChange}
-            ></input>
-          </div>
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={handleClick}
-          >
-            Add Project
-          </button>
-        </div> */}
         
       </div>
     </div>

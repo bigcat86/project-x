@@ -99,7 +99,24 @@ export const ASSIGN_TASK = gql`
       user {
         _id
         username
-        tasks
+        tasks {
+          _id
+        }
+      }
+    }
+  }
+`;
+
+export const addTeammate = gql`
+  mutation addTeammate($userId: ID!, $teamId: ID!) {
+    addTeammate(userId: $userId, teamId: $teamId) {
+      team {
+        _id
+        teamName
+        users {
+          _id
+          username
+        }
       }
     }
   }

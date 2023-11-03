@@ -1,10 +1,14 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import { QUERY_ME, QUERY_PROJECTS, QUERY_TASKS, QUERY_USERS } from "../utils/queries";
-import TeamCard from "../components/TeamCard";
+import {
+  QUERY_ME,
+  QUERY_PROJECTS,
+  QUERY_TASKS,
+  QUERY_USERS,
+} from "../utils/queries";
+import TeamCard from "../components/UserCard";
 import ProjectCard from "../components/ProjectCard";
 import CreateTeam from "../components/CreateTeam";
-
 
 export default function Profile() {
   const { data: projectData } = useQuery(QUERY_PROJECTS);
@@ -17,7 +21,6 @@ export default function Profile() {
   const tasks = taskData?.tasks || [];
   const users = userData?.users || [];
 
-
   return (
     <div className="Profile container mt-5" data-bs-theme="dark">
       <div className="profile-header container col-11 d-flex align-items-center">
@@ -27,10 +30,10 @@ export default function Profile() {
       <div className="container-fluid mt-3">
         <div className="row gap-2 d-flex justify-content-center">
           <div className="profile-left col-7">
-            <ProjectCard projects={projects}/>
+            <ProjectCard projects={projects} />
           </div>
           <div className="profile-right col-4">
-            <TeamCard users={users}/>
+            <TeamCard users={users} />
           </div>
         </div>
       </div>

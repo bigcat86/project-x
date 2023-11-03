@@ -136,6 +136,40 @@ const resolvers = {
         console.error(error);
       }
     },
+    addTeammate: async (parent, {userId, teamId}) => {
+      try {
+        const team = await Team.findByIdAndUpdate(
+          { _id: teamId },
+          { $addToSet: { users: { _id: userId }}},
+          { new: true }
+        );
+        const user = await User.findByIdAndUpdate(
+          { _id: userId },
+          { $addToSet: { teams: { _id: teamId }}},
+          { new: true }
+        )
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    assignTask: async (parent, { userId, taskId }) => {
+      try {
+        const user = await User.findByIdAndUpdate(
+          { _id: userId },
+          { $addToSet: { tasks : { _id: taskId }}},
+          { new: true }
+          );
+        const task = await Task.findByIdAndUpdate(
+          { _id: taskId },
+          { $addToSet: { users: { _id: userId }}},
+          { new: true }
+        );
+        return user;
+      } catch (error) {
+        console.error(error);
+      }
+      
+    }
   },
 };
 
