@@ -128,6 +128,7 @@ export const CREATE_TEAM = gql`
       team {
         _id
         teamName
+        teamLead 
         users {
           _id
           username

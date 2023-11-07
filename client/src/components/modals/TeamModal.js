@@ -1,10 +1,8 @@
-import React, { useState } from "react";
-import { useQuery, useMutation } from "@apollo/client";
-import { QUERY_ME, QUERY_USERS } from "../../utils/queries";
-import UserCard from "../UserCard";
+import { useState } from "react";
 import logo from "../../images/x-logo.png";
 import * as Icon from "react-bootstrap-icons";
 import CreateTeam from "../CreateTeam";
+import TeamCard from "../TeamCard";
 
 export default function TeamModal({ users }) {
 
@@ -23,7 +21,7 @@ export default function TeamModal({ users }) {
         data-bs-toggle="modal"
         data-bs-target="#team"
       >
-        Manage Team
+        Manage Teams
       </button>
 
       <div
@@ -51,6 +49,7 @@ export default function TeamModal({ users }) {
               <div className="row">
                 <div className="col-6">
                   <p>My Teams</p>
+                  <TeamCard teammates={teammates} />
                   <CreateTeam users={users} teammates={teammates} setTeammates={setTeammates}/>
                 </div>
                 <div className="col-6">

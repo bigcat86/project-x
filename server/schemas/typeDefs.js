@@ -71,8 +71,8 @@ const typeDefs = gql`
     _id: ID!
     teamName: String!
     projectId: ID
-    teamLead: User!
-    users: [ID]!
+    teamLead: ID!
+    users: [User]
   }
 
   input TeamData {

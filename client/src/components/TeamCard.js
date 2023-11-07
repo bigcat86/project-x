@@ -1,37 +1,33 @@
 import React from "react";
-import { useMutation, useQuery } from "@apollo/client";
-import { QUERY_TEAMS } from "../utils/queries";
-import logo from "../images/x-logo.png";
 
-export default function TeamCard({teams}) {
+
+export default function TeamCard({teammates, teams}) {
  
 
   return (
-    <div className="" data-bs-theme="dark">
-      <h3 className="project-title border border-light rounded bg-primary p-3 d-flex flex-column align-items-start">
-        {teams.map((team) => {
-          return team.teamName;
-        })}
-      </h3>
 
-      <ul className="Team list-group mt-2" data-bs-theme="dark">
-        {teams.map((team) => {
-          return team.users.map((mate) => {
-            return (
-              <div key={mate.id}>
-                <li className="list-group-item bg-dark d-flex">
-                  <img
-                    src={mate.image ? mate.image : logo}
-                    alt={""}
-                    className="teamImg"
-                  ></img>
-                  {mate.username}
-                </li>
-              </div>
-            );
-          });
-        })}
-      </ul>
+    <div>
+    {teammates.length > 0 ? (
+      <div className="project-title border border-light rounded bg-primary p-3 d-flex flex-column align-items-start">
+        {teammates.map((user) => {
+          return (
+            <div className="d-flex" key={user.username}>
+              <img
+                src={user.image}
+                alt="logo"
+                className="rounded-circle"
+                width="50"
+                height="50"
+              />
+              <p className="mx-3">{user.username}</p>
+            </div>
+          );
+        }
+        )}
+      </div>
+    ) : (
+      <h3>No Teams Yet</h3>
+    )}
     </div>
   );
 }

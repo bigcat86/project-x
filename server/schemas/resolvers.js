@@ -5,16 +5,16 @@ const { User, Project, Task, Team } = require("../models");
 const resolvers = {
   Query: {
     users: async (parent, args) => {
-      return User.find({});
+      return User.find({}).populate("projects").populate("tasks").populate("teams");
     },
     teams: async (parent, args) => {
-      return Team.find({});
+      return Team.find({}).populate("users");
     },
     projects: async (parent, args) => {
-      return Project.find({}).populate("task");
+      return Project.find({}).populate("tasks").populate("teams");
     },
     tasks: async (parent, args) => {
-      return Task.find({});
+      return Task.find({}).populate("users").populate("projects");
     },
     me: async (parent, args, context) => {
       if (context.user) {
@@ -175,7 +175,7 @@ const resolvers = {
         const team = await Team.create({ teamName, teamLead});
         const user = await User.findByIdAndUpdate(
           { _id: conext.user._id },
-          { $addToSet: { teams: { _id: team._id }}},
+          { $addToSet: { teams: { teamName: team.teamName, _id: team._id }}},
           { new: true }
         );
         return team;

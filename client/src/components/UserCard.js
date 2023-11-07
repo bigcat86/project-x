@@ -3,7 +3,6 @@ import * as Icon from "react-bootstrap-icons";
 import logo from "../images/x-logo.png";
 import TeamModal from "./modals/TeamModal";
 
-
 export default function UserCard({ users }) {
   if (!users.length) {
     return <h1>Loading...</h1>;
@@ -11,11 +10,18 @@ export default function UserCard({ users }) {
 
   return (
     <div className="" data-bs-theme="dark">
+      <div className="project-title border border-light rounded bg-primary p-3 d-flex justify-content-between">
+        <div>
+          <h3>
+            <Icon.PeopleFill className="mx-2" color="whitesmoke" size={25} />
+            Users
+          </h3>
+        </div>
 
-      <h3 className="project-title border border-light rounded bg-primary p-3 d-flex flex-column align-items-start">
-        <Icon.PeopleFill color="whitesmoke" size={25} /> Users
-        <TeamModal users={users} className="align-self-end"/>
-      </h3>
+        <div>
+          <TeamModal users={users} className="align-self-end" />
+        </div>
+      </div>
 
       <ul className="Team list-group mt-2" data-bs-theme="dark">
         {users.map((user) => {
