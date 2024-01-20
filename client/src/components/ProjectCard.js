@@ -8,6 +8,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Tooltip from "react-bootstrap";
 import AddProjectModal from "../components/modals/AddProjectModal";
 
+
 export default function ProjectCard({ projects, profile }) {
   const style = {
     color: "whitesmoke",
@@ -30,6 +31,10 @@ export default function ProjectCard({ projects, profile }) {
       console.error(error);
     }
   }
+
+  const today = new Date().toLocaleDateString();
+  console.log(today);
+ 
 
   return (
     <div className="list-group w-100" data-bs-theme="dark">
@@ -54,7 +59,7 @@ export default function ProjectCard({ projects, profile }) {
               <div className="list-group-item">
                 <div className="d-flex w-100 justify-content-between">
                   <h5 className="mb-1 text-primary">{project.projectName}</h5>
-                  <small>
+                  <small style={{ color: Date.parse(project.deadline) < Date.parse(today) ? `red` : `whitesmoke` }}>
                     {location.pathname === '/projects' ? 
                     <Icon.Trash3Fill
                       id={project._id}
@@ -77,7 +82,7 @@ export default function ProjectCard({ projects, profile }) {
                 >
                   <div
                     className="progress-bar"
-                    style={{ width: `${(project.completion / 10) * 5}rem ` }}
+                    style={{ width: `${project.completion}% ` }}
                   >
                     {project.completion}%
                   </div>

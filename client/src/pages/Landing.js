@@ -7,7 +7,7 @@ export default function Landing() {
     <div className="container-fluid">
       <div className="Landing row">
           <div className="logo-big">
-            <img src={logo} id="logo"></img>
+            <img src={logo} alt="x-logo" id="logo"></img>
           </div>
         </div>
     </div>

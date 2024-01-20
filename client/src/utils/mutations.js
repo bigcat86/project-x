@@ -137,3 +137,42 @@ export const CREATE_TEAM = gql`
     }
   }
 `;
+
+export const COMPLETE_TASK = gql`
+  mutation completeTask($taskId: ID!) {
+    completeTask(taskId: $taskId) {
+      _id
+      taskName
+      description
+      projectId
+      deadline
+      completion
+      completed
+      users {
+        _id
+        username
+      }
+    }
+  }
+`;
+
+export const COMPLETE_PROJECT = gql`
+  mutation completeProject($projectId: ID!) {
+    completeProject(projectId: $projectId) {
+      _id
+      projectName
+      description
+      deadline
+      completion
+      completed
+      tasks {
+        _id
+        taskName
+      }
+      teams {
+        _id
+        teamName
+      }
+    }
+  }
+`;

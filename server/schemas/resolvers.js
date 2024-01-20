@@ -182,8 +182,34 @@ const resolvers = {
       } catch (error) {
         console.error(error);
       }
+    },
+    completeTask: async (parent, { taskId }) => {
+      try {
+        const task = await Task.findById({ _id: taskId });
+        const taskUpdate = await Task.findByIdAndUpdate(
+          { _id: taskId },
+          { $set: { completed: task.completed ? false : true }},
+          { new: true }
+        );
+        return taskUpdate;
+      } catch (error) {
+        console.error(error);
+      }
+  },
+  completeProject: async (parent, { projectId }) => {
+    try {
+      const project = await Project.findById({ _id: projectId });
+      const projectUpdate = await Project.findByIdAndUpdate(
+        { _id: projectId },
+        { $set: { completed: project.completed ? false : true }},
+        { new: true }
+      );
+      return projectUpdate;
+    } catch (error) {
+      console.error(error);
     }
   },
+},
 };
 
 module.exports = resolvers;

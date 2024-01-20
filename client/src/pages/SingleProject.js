@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
-import { ADD_TASK, REMOVE_TASK } from "../utils/mutations";
+import { ADD_TASK, REMOVE_TASK, COMPLETE_TASK } from "../utils/mutations";
 import { QUERY_TASKS, QUERY_ME, QUERY_PROJECTS } from "../utils/queries";
 import * as Icon from "react-bootstrap-icons";
-import AddProjectModal from "../components/modals/AddProjectModal"
+import AddProjectModal from "../components/modals/AddProjectModal";
 
 export default function SingleProject() {
   const {
@@ -12,6 +12,7 @@ export default function SingleProject() {
     loading: taskLoading,
     error: taskError,
   } = useQuery(QUERY_TASKS);
+  
   const {
     data: projectData,
     loading: projectLoading,
@@ -23,6 +24,7 @@ export default function SingleProject() {
   const { projectId } = useParams();
 
   const [removeTask, { error }] = useMutation(REMOVE_TASK);
+  const [completeTask, { errorComplete }] = useMutation(COMPLETE_TASK);
 
   async function handleTrash(event) {
     event.preventDefault();
@@ -38,7 +40,22 @@ export default function SingleProject() {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
+
+  async function handleComplete(event) {
+    // event.preventDefault();
+    console.log(event.target.id);
+    try {
+      const { data } = await completeTask({
+        variables: {
+          taskId: event.target.id,
+        },
+      });
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   if (projectLoading || taskLoading) {
     return <div>Loading...</div>;
@@ -55,14 +72,30 @@ export default function SingleProject() {
           <li className="list-group-item">
             Completion: {thisProject[0].completion}%
           </li>
-          <li className="list-group-item d-flex justify-content-between">Tasks:<AddProjectModal /></li>
+          <li className="list-group-item d-flex justify-content-between">
+            Tasks:
+            <AddProjectModal />
+          </li>
           <li className="list-group-item">
-            {thisTask.length ? 
+            {thisTask.length ? (
               thisTask.map((task) => {
                 return (
-                  <li className="list-group-item d-flex justify-content-between">
-                    <div key={task._id}>{task.taskName}</div>
+                  <li className="list-group-item d-flex justify-content-between" key={task._id} id={task._id}>
                     <div>
+                      {task.taskName}
+                      <Icon.Check2Circle
+                        color={task.completed === true ? "green" : "whitesmoke"}
+                        size={25}
+                      ></Icon.Check2Circle>
+                    </div>
+                    <div>
+                      <button
+                        className="btn btn-primary"
+                        id={task._id}
+                        onClick={handleComplete}
+                      >
+                        Complete Task
+                      </button>
                       <Icon.Trash3Fill
                         id={task._id}
                         color="whitesmoke"
@@ -73,9 +106,9 @@ export default function SingleProject() {
                   </li>
                 );
               })
-             : 
-             <li className="list-group-item">Tasks Not Yet Assigned</li>  
-            }
+            ) : (
+              <li className="list-group-item">Tasks Not Yet Assigned</li>
+            )}
           </li>
         </ul>
       </div>
