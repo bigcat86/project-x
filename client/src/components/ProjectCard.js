@@ -62,7 +62,8 @@ export default function ProjectCard({ projects, profile }) {
                   <small style={{ color: Date.parse(project.deadline) < Date.parse(today) ? `red` : `whitesmoke` }}>
                     {location.pathname === '/projects' ? 
                     <Icon.Trash3Fill
-                      id={project._id}
+                    className="mx-3"  
+                    id={project._id}
                       color="whitesmoke"
                       size={25}
                       onClick={handleTrash}

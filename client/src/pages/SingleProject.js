@@ -12,7 +12,7 @@ export default function SingleProject() {
     loading: taskLoading,
     error: taskError,
   } = useQuery(QUERY_TASKS);
-  
+
   const {
     data: projectData,
     loading: projectLoading,
@@ -43,7 +43,7 @@ export default function SingleProject() {
   };
 
   async function handleComplete(event) {
-    // event.preventDefault();
+    event.preventDefault();
     console.log(event.target.id);
     try {
       const { data } = await completeTask({
@@ -51,7 +51,7 @@ export default function SingleProject() {
           taskId: event.target.id,
         },
       });
-      window.location.reload();
+      // window.location.reload();
     } catch (error) {
       console.error(error);
     }
@@ -73,7 +73,7 @@ export default function SingleProject() {
             Completion: {thisProject[0].completion}%
           </li>
           <li className="list-group-item d-flex justify-content-between">
-            Tasks:
+            Tasks: ({thisProject[0].tasks.length})
             <AddProjectModal />
           </li>
           <li className="list-group-item">
@@ -81,16 +81,18 @@ export default function SingleProject() {
               thisTask.map((task) => {
                 return (
                   <li className="list-group-item d-flex justify-content-between" key={task._id} id={task._id}>
-                    <div>
+                    <div
+                      style={{color: task.completed === true ? "green" : "whitesmoke"}}
+                    >
                       {task.taskName}
                       <Icon.Check2Circle
-                        color={task.completed === true ? "green" : "whitesmoke"}
+                        style={{display: task.completed === true ? "inline" : "none"}}
                         size={25}
                       ></Icon.Check2Circle>
                     </div>
                     <div>
                       <button
-                        className="btn btn-primary"
+                        className="btn btn-primary mx-3"
                         id={task._id}
                         onClick={handleComplete}
                       >
