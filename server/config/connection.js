@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 
-mongoose.connect("mongodb+srv://attanner86:hbskater@clusterx.lxzybun.mongodb.net/?retryWrites=true&w=majority"
+mongoose.connect(process.env.MONGODB_URI
 || 'mongodb://127.0.0.1:27017/project-x', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
