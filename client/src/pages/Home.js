@@ -37,7 +37,7 @@ export default function Home() {
         </div>
         <div className="col-6 d-flex flex-column">
           <div className="donut">
-            <ChartDonut myProjects={profile.projects} />
+            <ChartDonut projects={projects} />
           </div>
           <div className="team">
             <UserCard users={users} myTeams={profile.teams} />

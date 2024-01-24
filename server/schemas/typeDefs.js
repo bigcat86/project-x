@@ -123,7 +123,7 @@ const typeDefs = gql`
     addTeammate(userId: ID!, teamId: ID!): teamResponse
     completeTask(taskId: ID!): Task
     completeProject(projectId: ID!): Project
-    updateProjectCompletion(projectId: ID!): Project
+    updateProjectCompletion(projectId: ID!, newCompletion: Int!): Project
   }
 `;
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
-import { ADD_TASK, REMOVE_TASK, COMPLETE_TASK } from "../utils/mutations";
+import { ADD_TASK, REMOVE_TASK, COMPLETE_TASK, UPDATE_PROJECT_COMPLETION } from "../utils/mutations";
 import { QUERY_TASKS, QUERY_ME, QUERY_PROJECTS } from "../utils/queries";
 import * as Icon from "react-bootstrap-icons";
 import AddProjectModal from "../components/modals/AddProjectModal";
@@ -25,6 +25,7 @@ export default function SingleProject() {
 
   const [removeTask, { error }] = useMutation(REMOVE_TASK);
   const [completeTask, { errorComplete }] = useMutation(COMPLETE_TASK);
+  const [updateProjectCompletion, { errorUpdate }] = useMutation(UPDATE_PROJECT_COMPLETION);
 
   async function handleTrash(event) {
     event.preventDefault();
@@ -37,13 +38,14 @@ export default function SingleProject() {
         },
       });
       window.location.reload();
+      updateCompletion();
     } catch (error) {
       console.error(error);
     }
   };
 
   async function handleComplete(event) {
-    event.preventDefault();
+    // event.preventDefault();
     console.log(event.target.id);
     try {
       const { data } = await completeTask({
@@ -51,7 +53,32 @@ export default function SingleProject() {
           taskId: event.target.id,
         },
       });
-      // window.location.reload();
+      window.location.reload();
+      updateCompletion();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  async function updateCompletion() {
+    console.log("updateCompletion");
+    try {
+      let count = 0;
+      let countCompleted = 0;
+      tasks.forEach((task) => {
+        count++;
+      });
+      tasks.forEach((task) => {
+        if (task.completed === true) {
+          countCompleted++;
+        }
+      });
+      const { data } = await updateProjectCompletion({
+        variables: {
+          projectId: projectId,
+          newCompletion: (countCompleted / count) * 100,
+        },
+      });
     } catch (error) {
       console.error(error);
     }
@@ -94,7 +121,11 @@ export default function SingleProject() {
                       <button
                         className="btn btn-primary mx-3"
                         id={task._id}
-                        onClick={handleComplete}
+                        onClick={async function(event) {
+                          event.preventDefault();
+                          handleComplete(event);
+                          // updateCompletion();
+                        }}
                       >
                         Complete Task
                       </button>
@@ -102,7 +133,11 @@ export default function SingleProject() {
                         id={task._id}
                         color="whitesmoke"
                         size={25}
-                        onClick={handleTrash}
+                        onClick={async function(event) {
+                          event.preventDefault();
+                          handleTrash(event);
+                          // updateCompletion();
+                        }}
                       ></Icon.Trash3Fill>
                     </div>
                   </li>

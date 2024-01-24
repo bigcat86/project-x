@@ -209,6 +209,17 @@ const resolvers = {
       console.error(error);
     }
   },
+  updateProjectCompletion: async (parent, { projectId, newCompletion }) => {
+    try {
+      const project = await Project.findByIdAndUpdate(
+        { _id: projectId },
+        { $set: { completion: newCompletion }},
+        { new: true }
+      );
+    } catch (error) {
+      console.error(error);
+    }
+},
 },
 };
 

@@ -176,3 +176,24 @@ export const COMPLETE_PROJECT = gql`
     }
   }
 `;
+
+export const UPDATE_PROJECT_COMPLETION = gql`
+  mutation updateProjectCompletion($projectId: ID!, $newCompletion: Int!) {
+    updateProjectCompletion(projectId: $projectId, newCompletion: $newCompletion) {
+      _id
+      projectName
+      description
+      deadline
+      completion
+      completed
+      tasks {
+        _id
+        taskName
+      }
+      teams {
+        _id
+        teamName
+      }
+    }
+  }
+`;
