@@ -19,13 +19,14 @@ export default function ChartDonut({projects}) {
       {
         label: "% of Workload",
         data: projects.map(project => (1 / count) * 100 ),
+        backgroundColor: ["#797ef6", "#4adede", "#1aa7ec", "#1e2f97"],
       },
       {
-        label: "points",
-        data: projects.map(project => (1 / count) * project.completion + count),
-        backgroundColor: ["#0d6efd", "rgba(255, 206, 86, 0.2)"],
-        borderColor: ["rgba(54, 162, 235, 1)", "rgba(0, 0, 0, 1)"],
-        borderWidth: 1,
+        label: "project completion %",
+        data: projects.map(project => project.completion),
+        backgroundColor: ["#0d6efd","#000000", "#f5f5f5"],
+        borderColor: ["#000000"],
+        borderWidth: 5,
       },
     ],
   };
@@ -40,4 +41,4 @@ export default function ChartDonut({projects}) {
     </div>
     </div>
   );
-}
+};
