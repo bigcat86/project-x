@@ -216,6 +216,14 @@ const resolvers = {
         { $set: { completion: newCompletion }},
         { new: true }
       );
+      if (project.completion === 100) {
+        const projectUpdate = await Project.findByIdAndUpdate(
+          { _id: projectId },
+          { $set: { completed: true }},
+          { new: true }
+        );
+      };
+      return project;
     } catch (error) {
       console.error(error);
     }
