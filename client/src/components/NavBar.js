@@ -23,7 +23,6 @@ export default function NavBar() {
     try {
       const { data } = await login({
         variables: {
-          username: "Demo",
           email: "demo@projectx.com",
           password: "password"
         }
