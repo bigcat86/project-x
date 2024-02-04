@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Redirect } from "react-router-dom";
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from "@apollo/client";
 import { setContext } from '@apollo/client/link/context';
 
@@ -13,6 +13,7 @@ import Communication from "./pages/Communication";
 import Login from "./pages/Login";
 import Logout from "./pages/Logout";
 import SingleProject from "./pages/SingleProject";
+import Auth from "./utils/auth";
 
 const httpLink = new createHttpLink({
   uri: "/graphql",
@@ -45,7 +46,7 @@ function App() {
             </div>
             <div className="col-9">
               <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={Auth.loggedIn() ? <Home /> : <Landing />} />
                 <Route path="/landing" element={<Landing />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Login />} />

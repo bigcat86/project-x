@@ -27,8 +27,8 @@ export default function Home() {
   //     }
   //   }
   // });
-
   return (
+    
     <div className="container-fluid text-center mt-5">
       <div className="row text-center">
         <div className="home-left col-6">
