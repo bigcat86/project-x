@@ -77,7 +77,8 @@ export default function NavBar() {
         </ul>
         {location.pathname === "/landing" ||
         location.pathname === "/login" ||
-        location.pathname === "/signup" ? (
+        location.pathname === "/signup" ||
+        location.pathname === "/" ? (
           <button type="button" className="btn btn-outline-light" onClick={demoGo}>
             Demo
           </button>
