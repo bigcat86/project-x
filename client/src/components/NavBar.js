@@ -17,7 +17,7 @@ export default function NavBar() {
 
   const location = useLocation();
 
-  const [login, {error}] = useMutation(LOGIN);
+  const [login, {loginError}] = useMutation(LOGIN);
 
   async function demoGo() {
     try {
@@ -29,7 +29,7 @@ export default function NavBar() {
       })
       Auth.login(data.login.token);
     } catch (error) {
-      alert(error);
+      alert(loginError + '' + error);
     }
   }
 
