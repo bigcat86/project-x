@@ -37,7 +37,7 @@ export default function ProjectCard({ projects, profile }) {
  
 
   return (
-    <div className="list-group w-100" data-bs-theme="dark">
+    <div className="list-group w-100 mt-3" data-bs-theme="dark">
       <div className="project-title text-start border border-light rounded bg-primary p-3 d-flex justify-content-between">
         <h3 className="proj-title">
           <Icon.CheckCircleFill color="whitesmoke" size={25} /> Projects

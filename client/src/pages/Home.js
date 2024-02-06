@@ -6,6 +6,8 @@ import ProjectCard from "../components/ProjectCard";
 import UserCard from "../components/UserCard";
 import ChartDonut from "../components/ChartDonut";
 import TaskCard from "../components/TaskCard";
+import * as Icon from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 
 import { QUERY_PROJECTS, QUERY_USERS, QUERY_ME } from "../utils/queries";
 import Auth from "../utils/auth";
@@ -27,21 +29,35 @@ export default function Home() {
   //     }
   //   }
   // });
+
   return (
-    
     <div className="container-fluid text-center mt-5">
       <div className="row text-center">
         <div className="home-left col-6">
           <ProjectCard projects={projects} profile={profile} />
           {/* <TaskCard myTasks={profile.tasks} /> */}
         </div>
+
         <div className="col-6 d-flex flex-column">
           <div className="donut">
             <ChartDonut projects={projects} />
           </div>
-          <div className="team">
+        </div>
+        <div className="row">
+          <div className="col-6">
             <UserCard users={users} myTeams={profile.teams} />
           </div>
+          <div className="socials col-6 d-flex align-items-end justify-content-around">
+            <Link to={"javascript:void(0)"} target="_blank" onClick={() => window.location = 'mailto:attanner86@gmail.com'}>
+              <Icon.EnvelopeAt className="social-icon" color="whitesmoke" size={50} />
+            </Link>
+            <Link to={"https://github.com/bigcat86"} target="_blank">
+              <Icon.Github  className="social-icon" color="whitesmoke" size={50} />
+            </Link>
+            <Link to={"https://aarontanner.io"} target="_blank">
+              <Icon.Globe2  className="social-icon" color="whitesmoke" size={50} />
+            </Link>
+            </div>
         </div>
       </div>
     </div>

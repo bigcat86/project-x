@@ -79,8 +79,8 @@ export default function NavBar() {
         location.pathname === "/login" ||
         location.pathname === "/signup" ||
         location.pathname === "/" ? (
-          <button type="button" className="btn btn-outline-light" onClick={demoGo}>
-            Demo
+          <button type="button" className="demo-btn btn rounded-pill btn-outline-light" onClick={demoGo}>
+            Demo Account
           </button>
         ) : (
           <div></div>

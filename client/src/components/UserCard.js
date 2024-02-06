@@ -9,7 +9,7 @@ export default function UserCard({ users }) {
   }
 
   return (
-    <div className="" data-bs-theme="dark">
+    <div className="mt-3" data-bs-theme="dark">
       <div className="project-title border border-light rounded bg-primary p-3 d-flex justify-content-between">
         <div>
           <h3>
@@ -27,7 +27,7 @@ export default function UserCard({ users }) {
         {users.map((user) => {
           return (
             <div key={user.id}>
-              <li className="list-group-item bg-dark d-flex">
+              <li className="list-group-item bg-dark d-flex" style={{height: "5rem"}}>
                 <img
                   src={user.image ? user.image : logo}
                   alt={""}

@@ -11,7 +11,18 @@
 }
 
 .icon-link {
-  padding: 0.3rem
+  padding: 0.3rem;
+}
+
+.demo-btn {
+  margin-top: 1rem;
+  padding: 1rem;
+  /* background: linear-gradient(to right, #0d6efd, rgba(0, 0, 34, 0.2)); */
+  border-radius: 20px;
+  color: whitesmoke;
+  font-size: 1rem;
+  text-shadow: 0 0 10px pink;
+  width: 20rem;
 }
 
 #logo {
@@ -54,12 +65,13 @@
   background-image: linear-gradient(to right, #0d6efd, rgba(0, 0, 34, 0.2));
   height: 100vh;
   position: sticky;
+  overflow-y: hidden;
 }
 
 .Login {
   padding: 1.3rem;
   height: 5rem;
-  background: rgba(0,0,0,0);
+  background: rgba(0, 0, 0, 0);
   overflow: hidden;
 }
 
@@ -72,9 +84,8 @@
   width: 1000px;
 }
 
-
 .landing-sign {
-  background: url('./images/x-logo.png');
+  background: url("./images/x-logo.png");
 }
 
 .Projects {
@@ -86,20 +97,22 @@
   overflow-y: scroll;
 } */
 
-.Team {
-  height: 15rem;
-  overflow-y: scroll;
-}
-
 .project-title {
   box-shadow: 0 0 20px pink;
+  width: 100%;
+}
+
+.Team {
+  height: 15rem;
+  overflow-y: auto;
 }
 
 .Team img {
   object-fit: cover;
-  height: 5rem;
-  width: 5rem;
+  height: 3rem;
+  width: 3rem;
   /* padding-right: 20px; */
+  margin-top: 0.5rem;
   margin-right: 2rem;
   border-radius: 50%;
 }
@@ -108,28 +121,62 @@
   border-radius: 50%;
   border: 10px solid rgb(255, 255, 255);
   height: 20rem;
-  position: absolute;
-  top: 7rem;
+  /* position: absolute;
+  top: 7rem; */
+  margin-left: -7rem;
   z-index: 100;
 }
 
+.socials {
+  /* border: 5px whitesmoke; */
+  /* border-style: solid solid solid none; */
+  border-radius: 50px;
+  background: linear-gradient(to bottom, rgba(0, 0, 34, 0.2), #0d6cfc);
+}
+
+.social-icon {
+  margin-bottom: 5rem;
+}
+
 .profile-header {
-  background: rgb(0, 0, 17);
+  background: linear-gradient(to right, rgb(93, 23, 255), rgb(250, 119, 230));
   height: 15rem;
   border: 3px solid whitesmoke;
 }
 
 .profile-header h1 {
-  margin-left: 22rem;
+  margin-left: 10rem;
+  font-size: 7rem;
 }
+/* 
+.my-proj {
+  margin-top: 2rem;
+  padding: 1rem;
+  font-size: 3rem;
+  border: 5px solid whitesmoke;
+  border-radius: 50px;
+  background: linear-gradient(to bottom, rgba(0, 0, 34, 0.2), #0d6cfc);
+}
+
+.my-team {
+  margin-top: 2rem;
+  padding: 1rem;
+  font-size: 3rem;
+  border: 5px solid whitesmoke;
+  border-radius: 50px;
+  background: linear-gradient(to bottom, rgba(0, 0, 34, 0.2), #0d6cfc);
+} */
 
 .profile-left {
   height: 60vh;
   background: rgb(0, 0, 17);
   border: 3px solid whitesmoke;
+  overflow-y: auto;
+  margin-top: 2rem;
 }
 
 .profile-right {
+  margin-top: 2rem;
   height: 60vh;
   background: rgb(0, 0, 17);
   border: 3px solid whitesmoke;
@@ -166,6 +213,6 @@ span {
 .modal-content {
   /* height: 50rem; */
   font-size: 1rem;
-  width:50rem;
-  overflow: scroll; 
+  width: 50rem;
+  overflow: scroll;
 }
