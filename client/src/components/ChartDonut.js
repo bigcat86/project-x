@@ -32,7 +32,7 @@ export default function ChartDonut({projects}) {
   };
 
   return (
-    <div className="w-100">
+    <div className="w-100 mt-3">
         <h3 className="project-title text-start border border-light rounded bg-primary p-3">
         <Icon.GraphUp color="whitesmoke" size={25} /> Performance
       </h3>
