@@ -75,10 +75,7 @@ export default function NavBar() {
             </Link>
           </li>
         </ul>
-        {location.pathname === "/landing" ||
-        location.pathname === "/login" ||
-        location.pathname === "/signup" ||
-        Auth.loggedIn() ? location.pathname === "/poop" : location.pathname === "/" ? (
+        {!Auth.loggedIn() ? (
           <button type="button" className="demo-btn btn rounded-pill btn-outline-light" onClick={demoGo}>
             Demo Account
           </button>
