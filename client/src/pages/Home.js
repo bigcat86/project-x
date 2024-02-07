@@ -51,7 +51,7 @@ export default function Home() {
             <Link to={"javascript:void(0)"} target="_blank" onClick={() => window.location = 'mailto:attanner86@gmail.com'}>
               <Icon.EnvelopeAt className="social-icon" color="whitesmoke" size={50} />
             </Link>
-            <Link to={"https://github.com/bigcat86"} target="_blank">
+            <Link to={"https://github.com/bigcat86/project-x"} target="_blank">
               <Icon.Github  className="social-icon" color="whitesmoke" size={50} />
             </Link>
             <Link to={"https://aarontanner.io"} target="_blank">
